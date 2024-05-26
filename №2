@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int choice;
+    double hypotenuse, leg, other_leg, area;
+
+    while (1) {
+        printf("\nМеню:\n");
+        printf("1. Знайти другий катет та площу трикутника\n");
+        printf("2. Вийти з програми\n");
+        printf("Виберіть опцію (1 або 2): ");
+        scanf("%d", &choice);
+
+        if (choice == 2) {
+            printf("Вихід з програми...\n");
+            break;
+        } else if (choice == 1) {
+            printf("Введіть значення гіпотенузи: ");
+            scanf("%lf", &hypotenuse);
+
+            printf("Введіть значення одного з катетів: ");
+            scanf("%lf", &leg);
+
+            if (hypotenuse <= 0 || leg <= 0) {
+                printf("Помилка: гіпотенуза та катет повинні бути додатніми числами.\n");
+                continue;
+            }
+
+            if (hypotenuse <= leg) {
+                printf("Помилка: гіпотенуза повинна бути більше за катет.\n");
+                continue;
+            }
+
+            other_leg = sqrt(hypotenuse * hypotenuse - leg * leg);
+
+            area = 0.5 * leg * other_leg;
+
+            printf("Другий катет: %.2lf\n", other_leg);
+            printf("Площа трикутника: %.2lf\n", area);
+        } else {
+            printf("Невірний вибір. Спробуйте ще раз.\n");
+        }
+    }
+
+    return 0;
+}
