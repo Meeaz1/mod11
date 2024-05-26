@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double x_input, y_input;
+    double result;
+
+    int choice;
+
+    while (1) {
+        printf("\nМеню:\n");
+        printf("1. Обчислити вираз f = (x^2 + y^2) / √(x + y)\n");
+        printf("2. Вийти з програми\n");
+        printf("Виберіть опцію (1 або 2): ");
+        scanf("%d", &choice);
+
+        if (choice == 2) {
+            printf("Вихід з програми...\n");
+            break;
+        } else if (choice == 1) {
+            printf("Введіть значення x: ");
+            if (scanf("%lf", &x_input) != 1) {
+                printf("Помилка: введено некоректне значення для x. Спробуйте ще раз.\n");
+                while (getchar() != '\n'); // Очистити буфер вводу
+                continue;
+            }
+            printf("Введіть значення y: ");
+            if (scanf("%lf", &y_input) != 1) {
+                printf("Помилка: введено некоректне значення для y. Спробуйте ще раз.\n");
+                while (getchar() != '\n'); // Очистити буфер вводу
+                continue;
+            }
+
+            if (x_input + y_input <= 0) {
+                printf("Помилка: сума введених значень x та y має бути більше 0.\n");
+                continue;
+            }
+
+            double x_squared = x_input * x_input;
+
+            double y_squared = y_input * y_input;
+
+            double sqrt_x_plus_y = sqrt(x_input + y_input);
+
+            result = (x_squared + y_squared) / sqrt_x_plus_y;
+
+            printf("f = (x^2 + y^2) / √(x + y) = %.5lf\n", result);
+        } else {
+            printf("Невірний вибір. Спробуйте ще раз.\n");
+        }
+    }
+
+    return 0;
+}
