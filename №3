@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <math.h> 
+
+int main() {
+    double a;
+    double result;
+    int choice;
+    
+    do {
+        printf("\nМеню:\n");
+        printf("1. Обчислити f(a)\n");
+        printf("2. Вийти\n");
+        printf("Виберіть опцію: ");
+        scanf("%d", &choice);
+        
+        switch (choice) {
+            case 1:
+                printf("Введіть дійсне число a: ");
+                scanf("%lf", &a);
+                
+                if (a > 0) {
+                    double denominator = a * a + 5 * a - 6;
+                    double numerator = fabs(a + cos(a));
+                    result = numerator / denominator;
+                } else {
+                    double numerator = fabs(a + cos(a));
+                    double denominator = a * a + 5 * a - 6;
+                    result = numerator / denominator;
+                }
+                
+                printf("f(a) = %lf\n", result);
+                break;
+                
+            case 2:
+                printf("До побачення!\n");
+                break;
+                
+            default:
+                printf("Неправильний вибір. Спробуйте ще раз.\n");
+                break;
+        }
+    } while (choice != 2);
+    
+    return 0;
+}
